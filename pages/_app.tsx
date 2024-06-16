@@ -1,10 +1,19 @@
 import Head from "next/head";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import { Noto_Sans } from "next/font/google";
+
+const noto_sans = Noto_Sans({ subsets: ["cyrillic", "latin"] });
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
 		<>
+			<style jsx global>{`
+				html,
+				body {
+					font-family: ${noto_sans.style.fontFamily};
+				}
+			`}</style>
 			<Head>
 				<title>My top - наш лучший топ!</title>
 				<meta
