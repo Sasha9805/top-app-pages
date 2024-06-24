@@ -1,7 +1,8 @@
+import { withLayout } from "../layout/Layout";
 import { Button, Htag, P, Tag, Rating } from "../components";
 import { useState } from "react";
 
-export default function Home() {
+function Home() {
 	const [rating, setRating] = useState<number>(4);
 	return (
 		<>
@@ -42,3 +43,5 @@ export default function Home() {
 		</>
 	);
 }
+
+export default withLayout(Home);
