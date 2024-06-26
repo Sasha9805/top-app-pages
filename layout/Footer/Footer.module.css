@@ -10,7 +10,7 @@
 }
 
 .footer a {
-	place-self: center;
+	align-self: center;
 }
 
 .footer a:hover {
