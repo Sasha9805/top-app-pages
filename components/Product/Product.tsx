@@ -4,12 +4,22 @@ import { Button, Card, Divider, Rating, Review, ReviewForm, Tag } from "..";
 import { declOfNum, priceRu } from "@/helpers/helpers";
 import Image from "next/image";
 import cn from "classnames";
-import { useState, Fragment } from "react";
+import { useState, useRef, Fragment } from "react";
 
 export const Product = ({ product, className, ...props }: ProductProps) => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
+	const reviewRef = useRef<HTMLDivElement>(null);
+
+	const scrollToReview = () => {
+		setIsReviewOpened(true);
+		reviewRef.current?.scrollIntoView({
+			behavior: "smooth",
+			block: "start",
+		});
+	};
+
 	return (
-		<>
+		<div className={className} {...props}>
 			<Card className={styles.product}>
 				<div className={styles.logo}>
 					<Image
@@ -48,12 +58,14 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
 				<div className={styles.priceTitle}>цена</div>
 				<div className={styles.creditTitle}>в кредит</div>
 				<div className={styles.ratingTitle}>
-					{product.reviewCount}{" "}
-					{declOfNum(product.reviewCount, [
-						"отзыв",
-						"отзыва",
-						"отзывов",
-					])}
+					<a href="#ref" onClick={scrollToReview}>
+						{product.reviewCount}{" "}
+						{declOfNum(product.reviewCount, [
+							"отзыв",
+							"отзыва",
+							"отзывов",
+						])}
+					</a>
 				</div>
 				<Divider className={cn(styles.hr, styles.hr2)} />
 				<div className={styles.description}>{product.description}</div>
@@ -100,6 +112,7 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
 				</div>
 			</Card>
 			<Card
+				ref={reviewRef}
 				color="blue"
 				className={cn(styles.reviews, {
 					[styles.opened]: isReviewOpened,
@@ -114,6 +127,6 @@ export const Product = ({ product, className, ...props }: ProductProps) => {
 				))}
 				<ReviewForm productId={product._id} />
 			</Card>
-		</>
+		</div>
 	);
 };
