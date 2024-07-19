@@ -6,10 +6,35 @@ import cn from "classnames";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { firstLevelMenu } from "@/helpers/helpers";
+import { motion } from "framer-motion";
 
 export const Menu = () => {
 	const { menu, setMenu, firstCategory } = useContext(AppContext);
 	const router = useRouter();
+
+	const variants = {
+		visible: {
+			marginBottom: 20,
+			transition: {
+				when: "beforeChildren",
+				staggerChildren: 0.1,
+			},
+		},
+		hidden: {
+			marginBottom: 0,
+		},
+	};
+
+	const variantsChildren = {
+		visible: {
+			opacity: 1,
+			height: 29,
+		},
+		hidden: {
+			opacity: 0,
+			height: 0,
+		},
+	};
 
 	const openSecondLevel = (secondCategory: string) => {
 		const newMenu = menu.map((m) => {
@@ -63,16 +88,18 @@ export const Menu = () => {
 							>
 								{m._id.secondCategory}
 							</div>
-							<div
-								className={cn(styles.secondLevelBlock, {
-									[styles.secondLevelBlockOpened]: m.isOpened,
-								})}
+							<motion.div
+								layout
+								variants={variants}
+								initial={m.isOpened ? "visible" : "hidden"}
+								animate={m.isOpened ? "visible" : "hidden"}
+								className={cn(styles.secondLevelBlock)}
 							>
 								{buildThirdLevel(
 									m.pages,
 									firstLevelMenuItem.route
 								)}
-							</div>
+							</motion.div>
 						</div>
 					);
 				})}
@@ -85,15 +112,16 @@ export const Menu = () => {
 			const currentHref = `/${route}/${p.alias}`;
 			const isActive = currentHref === router.asPath;
 			return (
-				<Link
-					key={p._id}
-					href={currentHref}
-					className={cn(styles.thirdLevel, {
-						[styles.thirdLevelActive]: isActive,
-					})}
-				>
-					{p.category}
-				</Link>
+				<motion.div key={p._id} variants={variantsChildren}>
+					<Link
+						href={currentHref}
+						className={cn(styles.thirdLevel, {
+							[styles.thirdLevelActive]: isActive,
+						})}
+					>
+						{p.category}
+					</Link>
+				</motion.div>
 			);
 		});
 	};
