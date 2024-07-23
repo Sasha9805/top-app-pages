@@ -11,6 +11,7 @@ import { useState } from "react";
 
 export const ReviewForm = ({
 	productId,
+	isOpened,
 	className,
 	...props
 }: ReviewFormProps) => {
@@ -55,6 +56,7 @@ export const ReviewForm = ({
 					})}
 					error={errors.name}
 					placeholder="Имя"
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<Input
 					{...register("title", {
@@ -66,6 +68,7 @@ export const ReviewForm = ({
 					error={errors.title}
 					placeholder="Заголовок отзыва"
 					className={styles.title}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={styles.rating}>
 					<span>Оценка</span>
@@ -85,6 +88,7 @@ export const ReviewForm = ({
 								isEditable
 								rating={field.value}
 								setRating={field.onChange}
+								tabIndex={isOpened ? 0 : -1}
 							/>
 						)}
 					/>
@@ -99,9 +103,12 @@ export const ReviewForm = ({
 					error={errors.description}
 					placeholder="Текст отзыва"
 					className={styles.description}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={styles.submit}>
-					<Button appearance="primary">Отправить</Button>
+					<Button appearance="primary" tabIndex={isOpened ? 0 : -1}>
+						Отправить
+					</Button>
 					<span className={styles.info}>
 						* Перед публикацией отзыв пройдет предварительную
 						модерацию и проверку
