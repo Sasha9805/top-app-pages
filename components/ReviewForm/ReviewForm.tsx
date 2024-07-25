@@ -151,7 +151,6 @@ export const ReviewForm = ({
 					>
 						<CloseIcon />
 					</button>
-					<CloseIcon />
 				</div>
 			)}
 		</form>
