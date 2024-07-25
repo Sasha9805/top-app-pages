@@ -35,9 +35,14 @@ const Layout = ({ children }: LayoutProps) => {
 			</a>
 			<Header className={styles.header} />
 			<Sidebar className={styles.sidebar} />
-			<div ref={bodyRef} tabIndex={0} className={styles.body}>
+			<main
+				ref={bodyRef}
+				tabIndex={0}
+				className={styles.body}
+				role="main"
+			>
 				{children}
-			</div>
+			</main>
 			<Footer className={styles.footer} />
 			<Up />
 		</div>
