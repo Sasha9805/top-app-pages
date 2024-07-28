@@ -23,19 +23,19 @@
 
 .price,
 .priceTitle {
-	grid-column: priceStart / priceEnd;
+	grid-column: pricestart / priceend;
 	white-space: nowrap;
 }
 
 .credit,
 .creditTitle {
-	grid-column: creditStart / creditEnd;
+	grid-column: creditstart / creditend;
 	white-space: nowrap;
 }
 
 .rating,
 .ratingTitle {
-	grid-column: ratingStart / end;
+	grid-column: ratingstart / end;
 }
 
 .hr,
