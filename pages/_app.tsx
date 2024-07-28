@@ -5,7 +5,7 @@ import { Noto_Sans } from "next/font/google";
 
 const noto_sans = Noto_Sans({ subsets: ["cyrillic", "latin"] });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
 			<style jsx global>{`
@@ -23,6 +23,14 @@ export default function App({ Component, pageProps }: AppProps) {
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=1"
+				/>
+				<meta
+					property="og:url"
+					content={process.env.NEXT_PUBLIC_DOMAIN + router.asPath}
+				/>
+				<meta
+					property="og:locale"
+					content="ru_RU"
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
