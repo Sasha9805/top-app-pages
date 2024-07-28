@@ -9,15 +9,18 @@
 }
 
 .sort button {
+	cursor: pointer;
+
 	display: grid;
 	grid-template-columns: 20px 1fr;
-	align-items: center;
 	gap: 8px;
-	cursor: pointer;
-	border: none;
-	background: none;
+	align-items: center;
+
 	font-size: 16px;
 	line-height: 22px;
+
+	background: none;
+	border: none;
 }
 
 .sort button:not(.active) {

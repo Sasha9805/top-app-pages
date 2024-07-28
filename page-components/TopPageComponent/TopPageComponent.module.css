@@ -1,18 +1,17 @@
 .title {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
-	align-items: baseline;
-	justify-items: left;
 	gap: 20px;
+	place-items: baseline left;
+
 	margin-bottom: 30px;
 }
 
 .hhTitle {
 	display: grid;
 	grid-template-columns: auto 1fr;
-	align-items: baseline;
-	justify-items: left;
 	gap: 20px;
+	place-items: baseline left;
 }
 
 .seo h1 {
@@ -25,6 +24,7 @@
 .seo h2 {
 	margin-top: 50px;
 	margin-bottom: 20px;
+
 	font-size: 22px;
 	font-weight: 500;
 	line-height: 30px;
@@ -37,7 +37,7 @@
 	line-height: 27px;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (width <= 640px) {
 	.title {
 		grid-template-columns: auto 1fr;
 	}
