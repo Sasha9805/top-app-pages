@@ -3,7 +3,7 @@ import styles from "./Product.module.css";
 import { ProductProps } from "./Product.props";
 import { Button, Card, Divider, Rating, Review, ReviewForm, Tag } from "..";
 import { declOfNum, priceRu } from "@/helpers/helpers";
-// import Image from "next/image";
+import Image from "next/image";
 import cn from "classnames";
 import { useState, useRef, Fragment, forwardRef, ForwardedRef } from "react";
 import { AnimationDefinition, motion } from "framer-motion";
@@ -45,13 +45,13 @@ export const Product = motion(
 				>
 					<Card className={styles.product}>
 						<div className={styles.logo}>
-							{/* <Image
+							<Image
 								src={product.image}
 								alt={product.title}
 								width={70}
 								height={70}
-							/> */}
-							<img src={product.image} alt={product.title} />
+							/>
+							{/* <img src={product.image} alt={product.title} /> */}
 						</div>
 						<div className={styles.title}>{product.title}</div>
 						<div className={styles.price}>
