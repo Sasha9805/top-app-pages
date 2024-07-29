@@ -39,6 +39,7 @@ const nextConfig = {
 			},
 		],
 	},
+	output: "export",
 };
 // const nextConfig = {
 //   reactStrictMode: true,

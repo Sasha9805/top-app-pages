@@ -3,19 +3,17 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { Noto_Sans } from "next/font/google";
 import ym, { YMInitializer } from "react-yandex-metrika";
-import { useEffect } from "react";
+import Router from "next/router";
 
 const noto_sans = Noto_Sans({ subsets: ["cyrillic", "latin"] });
 
-export default function App({ Component, pageProps, router }: AppProps) {
-	useEffect(() => {
-		router.events.on("routeChangeComplete", (url: string) => {
-			if (typeof window !== "undefined") {
-				ym("hit", url);
-			}
-		});
-	}, []);
+Router.events.on("routeChangeComplete", (url: string) => {
+	if (typeof window !== "undefined") {
+		ym("hit", url);
+	}
+});
 
+export default function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
 			<style jsx global>{`
