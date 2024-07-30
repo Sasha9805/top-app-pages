@@ -25,7 +25,12 @@ export const Up = () => {
 			animate={controls}
 			className={styles.up}
 		>
-			<ButtonIcon appearance="primary" icon="up" onClick={scrollToTop} />
+			<ButtonIcon
+				appearance="primary"
+				icon="up"
+				aria-label="Наверх"
+				onClick={scrollToTop}
+			/>
 		</motion.div>
 	);
 };
